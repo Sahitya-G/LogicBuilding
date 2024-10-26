@@ -1,0 +1,45 @@
+Write a Java program that determines if an array can be sorted in non-decreasing order by performing swaps only between elements with the same parity (both even or both odd). The program should output "yes" if the array can be sorted using this method and "no" otherwise.
+
+Input:
+An integer array arr containing both even and odd integers.
+Output:
+Print "yes" if the array can be sorted in non-decreasing order by swapping only elements of the same parity.
+Print "no" otherwise.
+
+Answer:
+
+public class Main {
+
+    public static void canBeSortedByParitySwaps(int[] arr) {
+        int n = arr.length;
+
+        // Perform swaps based on parity and order
+        for (int i = 0; i < n; i++) {
+            for (int j = n - 1; j > i; j--) {
+                if (arr[i] % 2 == arr[j] % 2 && arr[i] <= arr[j]) {
+                    int temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+        }
+
+        // Check if the array is sorted
+        boolean flag=false;
+        for (int i = 0; i < n-1; i++) {
+            if (arr[i] < arr[i +1]) {
+                flag=true;
+            }
+        }
+
+        if(flag) System.out.println("yes");
+       else System.out.println("No");
+
+    }
+
+    public static void main(String[] args) {
+        int[] array = {5, 3, 2, 8, 1, 4};
+         canBeSortedByParitySwaps(array);
+          // Output: Yes
+    }
+}

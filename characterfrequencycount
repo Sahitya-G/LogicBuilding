@@ -1,0 +1,39 @@
+Question:
+
+Write a Java program that reads a string and calculates the frequency of each character in the string. The program should display each unique character along with its frequency.
+
+Input:
+A single line containing a string s, which may include uppercase and lowercase letters.
+Output:
+Print each unique character in the string followed by its frequency. Output each character and its frequency on a new line.
+
+Constraints:
+The input string will only contain alphabetic characters.
+Characters are case-sensitive (e.g., 'A' and 'a' are considered different characters).
+
+
+
+  Answer:
+
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		String s=sc.next();
+		freq(s);
+
+	}
+	public static void freq(String s){
+	    Map<Character,Integer> mp=new HashMap<>();
+	    int n=s.length();
+	    for(int i=0;i<n;i++){
+	        char c=s.charAt(i);
+	        mp.put(c,1+mp.getOrDefault(c,0));
+	    }
+	    for(char p:mp.keySet()){
+	        System.out.println(p+" "+mp.get(p));
+	    }
+	    
+	}
+}
